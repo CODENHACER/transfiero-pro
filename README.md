@@ -2,7 +2,7 @@
 
 Repositorio de la versión de pago de TRANSFIERO (extensión de Chrome para enviar archivos entre PC y móvil).
 
-El repositorio de la versión gratuita (TRANSFIERO, morada) es independiente: `transfiero-extension-server`.
+El repositorio de la versión gratuita (TRANSFIERO, color morado) es independiente: `transfiero-extension-server`.
 
 ## Estructura
 
