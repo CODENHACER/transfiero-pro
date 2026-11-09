@@ -174,35 +174,17 @@ async function addRow(dir, blob, name, folderCount = null) {
   li.append(await previewFor(blob, name, cfg.previews), meta);
 
   if (dir === "recv") {
-    let savedAs = null;
+    list.prepend(li);
     if (dirHandle) {
-      if (await hasPermission(dirHandle)) {
-        try {
-          savedAs = await saveToFolder(dirHandle, name, blob);
-        } catch (err) {
-          console.error(err);
-          showFolderMsg("folder.error", "err");
-        }
-      } else {
-        showFolderMsg("folder.noperm", "warn");
-      }
-    }
-
-    if (savedAs) {
-      const note = document.createElement("small");
-      note.className = "muted note";
-      note.textContent = t("folder.saved", { folder: dirHandle.name }) + (savedAs !== name ? ` · ${savedAs}` : "");
-      li.querySelector(".meta").append(note);
-      list.prepend(li);
+      await saveReceived(meta, blob, name, li);   // con carpeta elegida: nunca va a Descargas en silencio
     } else {
-      // Descarga normal del navegador; "Guardar" queda disponible si la descarga automática se bloquea
+      // Sin carpeta elegida: descarga normal del navegador; "Guardar" queda disponible si se bloquea
       const a = document.createElement("a");
       a.className = "btn small primary";
       a.href = URL.createObjectURL(blob);
       a.download = name;
       say(a, "btn.save");
       li.append(a);
-      list.prepend(li);
       a.click();
     }
   } else {
@@ -213,6 +195,53 @@ async function addRow(dir, blob, name, folderCount = null) {
     await addHistory({ dir, name, size: blob.size, type: blob.type });
     renderHistory();
   }
+}
+
+// Guarda un archivo recibido en la carpeta elegida. Si no hay permiso activo, ofrece un botón
+// "Guardar en {carpeta}": el clic permite a Chrome pedir el permiso y guardar.
+function savedNote(target, savedAs, name) {
+  const note = document.createElement("small");
+  note.className = "muted note";
+  note.textContent = t("folder.saved", { folder: target.name }) + (savedAs !== name ? ` · ${savedAs}` : "");
+  return note;
+}
+
+async function saveReceived(meta, blob, name, li) {
+  const target = dirHandle;
+  if (await hasPermission(target)) {
+    try {
+      const savedAs = await saveToFolder(target, name, blob);
+      meta.append(savedNote(target, savedAs, name));
+      return;
+    } catch (err) {
+      console.error(err);
+      showFolderMsg("folder.error", "err");
+    }
+  }
+
+  const btn = document.createElement("button");
+  btn.className = "btn small primary";
+  say(btn, "btn.folder.savein", { folder: target.name });
+  btn.onclick = async () => {
+    btn.disabled = true;
+    try {
+      if (!(await hasPermission(target)) && !(await requestPermission(target))) {
+        showFolderMsg("folder.noperm", "warn");
+        btn.disabled = false;
+        return;
+      }
+      const savedAs = await saveToFolder(target, name, blob);
+      meta.append(savedNote(target, savedAs, name));
+      btn.remove();
+      await updateFolderUI();
+    } catch (err) {
+      console.error(err);
+      showFolderMsg("folder.error", "err");
+      btn.disabled = false;
+    }
+  };
+  li.append(btn);
+  await updateFolderUI();
 }
 
 function showFolderMsg(key, kind = "err") {
@@ -240,7 +269,28 @@ async function updateFolderUI() {
   $("btnFolderReset").hidden = !dirHandle;
   $("folderLine").textContent = t("folder.current", { name });
   $("folderLine").hidden = !supported;
+
+  // Aviso con botón cuando la carpeta existe pero el permiso está pendiente (p. ej. tras reabrir el panel)
+  const pending = supported && !!dirHandle && !ready;
+  document.querySelectorAll(".folderBanner").forEach((box) => {
+    box.hidden = !pending;
+    box.querySelector(".bannerText").textContent = t("folder.banner", { name });
+    box.querySelector(".btnReauth").textContent = t("btn.folder.reauth");
+  });
 }
+
+document.querySelectorAll(".btnReauth").forEach((btn) => {
+  btn.onclick = async () => {
+    clearFolderMsg();
+    try {
+      if (dirHandle && !(await requestPermission(dirHandle))) showFolderMsg("folder.noperm", "warn");
+    } catch (err) {
+      console.error(err);
+      showFolderMsg("folder.error", "err");
+    }
+    await updateFolderUI();
+  };
+});
 
 // Cola de envío: cada trabajo es un archivo suelto o una carpeta (se empaqueta en ZIP antes de enviarla).
 function enqueue(jobs) {

@@ -25,6 +25,10 @@
     <section data-panel="pair" class="card center">
       <h2 data-i18n="pair.title">1. Escanea el código con tu móvil</h2>
       <p class="muted" data-i18n="pair.desc">Abre la cámara de tu Android o iPhone y apunta al código QR.</p>
+      <div class="hint folderBanner" hidden>
+          <p class="bannerText"></p>
+          <button class="btn small primary btnReauth"></button>
+        </div>
       <canvas id="qr" class="qr"></canvas>
       <p class="muted small" data-i18n="pair.linkhint">Haz clic en este enlace en caso de que el código QR no funcione:</p>
       <p><a id="link" class="link-btn" href="#" target="_blank" rel="noopener" data-i18n="pair.linktext">Abrir enlace en el móvil</a></p>
@@ -46,6 +50,10 @@
     </section>
 
     <section data-panel="transfer" hidden>
+      <div class="hint folderBanner" hidden>
+          <p class="bannerText"></p>
+          <button class="btn small primary btnReauth"></button>
+        </div>
       <div class="card">
         <h2 data-i18n="send.title">Enviar al móvil</h2>
         <label id="drop" class="drop" for="pick">

@@ -1,6 +1,6 @@
 // Deutsche Übersetzung von TRANSFIERO Pro.
 export const DE = {
-  "btn.home": "Start", "btn.back": "Zurück", "btn.clear": "Verlauf löschen", "btn.copied": "Kopiert!", "btn.copy": "Link kopieren",
+  "btn.home": "Start", "folder.banner": "Download-Ordner: {name}. Tippe, damit TRANSFIERO empfangene Dateien dort speichern darf.", "btn.folder.savein": "In {folder} speichern", "btn.back": "Zurück", "btn.clear": "Verlauf löschen", "btn.copied": "Kopiert!", "btn.copy": "Link kopieren",
   "btn.end": "Sitzung beenden", "btn.folder.choose": "Ordner wählen", "btn.folder.reauth": "Ordner erneut aktivieren",
   "btn.folder.reset": "Normale Downloads verwenden", "btn.help": "Anleitung", "btn.logout": "Sitzung schließen",
   "btn.logout_confirm": "Sicher? Zum Schließen drücken", "btn.match": "Stimmen überein", "btn.newqr": "Neuer QR-Code",

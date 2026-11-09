@@ -1,6 +1,6 @@
 // Traducción al francés de TRANSFIERO Pro.
 export const FR = {
-  "btn.home": "Accueil", "btn.back": "Retour", "btn.clear": "Effacer l'historique", "btn.copied": "Copié !", "btn.copy": "Copier le lien",
+  "btn.home": "Accueil", "folder.banner": "Dossier de téléchargement : {name}. Appuyez pour autoriser TRANSFIERO à y enregistrer les fichiers reçus.", "btn.folder.savein": "Enregistrer dans {folder}", "btn.back": "Retour", "btn.clear": "Effacer l'historique", "btn.copied": "Copié !", "btn.copy": "Copier le lien",
   "btn.end": "Terminer la session", "btn.folder.choose": "Choisir un dossier", "btn.folder.reauth": "Réactiver le dossier",
   "btn.folder.reset": "Utiliser les téléchargements normaux", "btn.help": "Instructions", "btn.logout": "Fermer la session",
   "btn.logout_confirm": "Sûr ? Appuyez pour fermer", "btn.match": "Ils correspondent", "btn.newqr": "Nouveau code QR",

@@ -1,6 +1,6 @@
 // Traducere în română a TRANSFIERO Pro.
 export const RO = {
-  "btn.back": "Înapoi", "btn.clear": "Șterge istoricul", "btn.copied": "Copiat!", "btn.copy": "Copiază linkul",
+  "btn.home": "Acasă", "folder.banner": "Folder de descărcare: {name}. Apasă pentru a permite TRANSFIERO să salveze acolo fișierele primite.", "btn.folder.savein": "Salvează în {folder}", "btn.back": "Înapoi", "btn.clear": "Șterge istoricul", "btn.copied": "Copiat!", "btn.copy": "Copiază linkul",
   "btn.end": "Încheie sesiunea", "btn.folder.choose": "Alege folderul", "btn.folder.reauth": "Reactivează folderul",
   "btn.folder.reset": "Folosește descărcările normale", "btn.help": "Instrucțiuni", "btn.logout": "Închide sesiunea",
   "btn.logout_confirm": "Sigur? Apăsați pentru a închide", "btn.match": "Coincid", "btn.newqr": "Cod QR nou",

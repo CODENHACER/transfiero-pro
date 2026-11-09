@@ -208,3 +208,5 @@ input.switch:checked::after { transform: translateX(18px); }
 
 .icon-btn { padding: 0; }
 .icon-btn.armed { background: var(--err); color: #fff; border-color: var(--err); }
+
+.folderBanner p { margin: 0 0 8px; }

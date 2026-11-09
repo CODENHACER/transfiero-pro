@@ -392,6 +392,33 @@ DICT.fr = FR;
 DICT.de = DE;
 DICT.ro = RO;
 
+
+// Botón Inicio (versión 1.3.1)
+const V131_KEYS = {
+  es: { "btn.home": "Inicio" },
+  en: { "btn.home": "Home" },
+  ca: { "btn.home": "Inici" },
+};
+for (const l of ["es", "en", "ca"]) Object.assign(DICT[l], V131_KEYS[l]);
+
+
+// Permiso de carpeta pendiente (versión 1.3.3)
+const V133_KEYS = {
+  es: {
+    "folder.banner": "Carpeta de descargas: {name}. Pulsa para permitir que TRANSFIERO guarde ahí los archivos recibidos.",
+    "btn.folder.savein": "Guardar en {folder}",
+  },
+  en: {
+    "folder.banner": "Download folder: {name}. Press to allow TRANSFIERO to save received files there.",
+    "btn.folder.savein": "Save to {folder}",
+  },
+  ca: {
+    "folder.banner": "Carpeta de descàrregues: {name}. Prem per permetre que TRANSFIERO hi desi els fitxers rebuts.",
+    "btn.folder.savein": "Desa a {folder}",
+  },
+};
+for (const l of ["es", "en", "ca"]) Object.assign(DICT[l], V133_KEYS[l]);
+
 export const LANGS = ["es", "en", "ca", "fr", "de", "ro"];
 let current = "es";
 
