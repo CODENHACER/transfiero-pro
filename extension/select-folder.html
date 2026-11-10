@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TRANSFIERO Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap pick-page">
+    <header class="brand">
+      <img src="icons/icon32.png" width="32" height="32" alt="">
+      <h1>TRANSFIERO <span class="pro">PRO</span></h1>
+    </header>
+
+    <section class="card center">
+      <h2 data-i18n="sf.title">Elige la carpeta de descarga</h2>
+      <p class="muted" data-i18n="sf.intro">Pulsa el botón y elige la carpeta donde se guardarán los archivos que recibas del móvil. Al terminar puedes cerrar esta pestaña: el panel lateral de TRANSFIERO Pro se actualiza solo.</p>
+      <p><button id="btnPick" class="btn primary" data-i18n="sf.btn">Elegir carpeta…</button></p>
+      <p id="sfMsg" class="hint" hidden></p>
+    </section>
+  </main>
+
+  <script type="module" src="select-folder.js"></script>
+</body>
+</html>
