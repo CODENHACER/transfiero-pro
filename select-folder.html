@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seleccionar Carpeta · TRANSFIERO Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: var(--fondo);
+    }
+    .box {
+      max-width: 420px;
+      padding: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card box">
+    <img src="icons/icon48.png" width="48" height="48" alt="TRANSFIERO Pro" style="margin-bottom:12px;">
+    <h2>Seleccionar carpeta de descargas</h2>
+    <p class="muted small">Elige la carpeta de tu ordenador donde se guardarán los archivos recibidos.</p>
+    <div style="margin: 20px 0;">
+      <button id="btnPick" class="btn primary">Seleccionar carpeta ahora</button>
+    </div>
+    <p id="statusMsg" class="small muted"></p>
+  </div>
+  <script type="module" src="select-folder.js"></script>
+</body>
+</html>
