@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "TRANSFIERO Pro",
+  "version": "1.3.6",
+  "description": "Envía archivos entre tu PC y tu móvil Android o iOS de forma cifrada, con vista previa e historial.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "TRANSFIERO Pro",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "app.html"
+  },
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
+  "minimum_chrome_version": "116"
+}
