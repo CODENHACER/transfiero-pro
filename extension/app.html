@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TRANSFIERO Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="icons/icon32.png" width="28" height="28" alt="">
+      <h1>TRANSFIERO</h1><span class="pro">PRO</span>
+    </div>
+    <div class="top-actions">
+      <span id="status" class="pill wait" data-i18n="st.wait">Esperando al móvil…</span>
+      <button id="btnHome" class="icon-btn" data-i18n-attr="title:btn.home;aria-label:btn.home" title="Inicio" aria-label="Inicio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></button>
+      <button id="btnSettings" class="icon-btn" data-i18n-attr="title:btn.settings;aria-label:btn.settings" title="Ajustes" aria-label="Ajustes">⚙</button>
+      <a class="icon-btn" href="help.html" target="_blank" rel="noopener" data-i18n-attr="title:btn.help;aria-label:btn.help" title="Instrucciones" aria-label="Instrucciones">?</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section data-panel="pair" class="card center">
+      <h2 data-i18n="pair.title">1. Escanea el código con tu móvil</h2>
+      <p class="muted" data-i18n="pair.desc">Abre la cámara de tu Android o iPhone y apunta al código QR.</p>
+      <div class="hint folderBanner" hidden>
+          <p class="bannerText"></p>
+          <button class="btn small primary btnReauth"></button>
+        </div>
+      <canvas id="qr" class="qr"></canvas>
+      <p class="muted small" data-i18n="pair.linkhint">Haz clic en este enlace en caso de que el código QR no funcione:</p>
+      <p><a id="link" class="link-btn" href="#" target="_blank" rel="noopener" data-i18n="pair.linktext">Abrir enlace en el móvil</a></p>
+      <p id="hint" class="hint" hidden></p>
+      <div class="row">
+        <button id="copy" class="btn" data-i18n="btn.copy">Copiar enlace</button>
+        <button id="retry" class="btn primary" data-i18n="btn.retry" hidden>Reintentar</button>
+      </div>
+    </section>
+
+    <section data-panel="verify" class="card center" hidden>
+      <h2 data-i18n="verify.title">2. Comprueba el código</h2>
+      <p class="muted" data-i18n="verify.desc">Debe ser idéntico al que aparece en la pantalla de tu móvil.</p>
+      <div id="code" class="code" aria-live="polite"></div>
+      <div class="row">
+        <button id="confirm" class="btn primary" data-i18n="btn.match">Coinciden</button>
+        <button id="cancel" class="btn" data-i18n="btn.nomatch">No coinciden</button>
+      </div>
+    </section>
+
+    <section data-panel="transfer" hidden>
+      <div class="hint folderBanner" hidden>
+          <p class="bannerText"></p>
+          <button class="btn small primary btnReauth"></button>
+        </div>
+      <div class="card">
+        <h2 data-i18n="send.title">Enviar al móvil</h2>
+        <label id="drop" class="drop" for="pick">
+          <span data-i18n="send.drop">Arrastra archivos aquí o</span> <span class="link" data-i18n="send.choose">elígelos</span>
+        </label>
+        <input id="pick" type="file" multiple hidden>
+        <div class="row">
+          <button id="btnPickFolder" class="btn small primary" data-i18n="send.folder">Enviar carpeta</button>
+        </div>
+        <input id="pickFolder" type="file" webkitdirectory multiple hidden>
+        <div class="progress"><div id="sendBar" class="bar"></div></div>
+        <p id="sendLabel" class="muted small" data-i18n="send.idle">Todavía no has enviado nada.</p>
+        <ul id="sentList" class="list"></ul>
+      </div>
+
+      <div class="card">
+        <h2 data-i18n="recv.title">Recibido del móvil</h2>
+        <div class="progress"><div id="recvBar" class="bar"></div></div>
+        <p id="recvLabel" class="muted small" data-i18n="recv.idle">Esperando archivos…</p>
+        <p id="folderLine" class="muted small"></p>
+        <p id="recvMsg" class="hint" hidden></p>
+        <ul id="received" class="list"></ul>
+      </div>
+
+      <div id="histCard" class="card" hidden>
+        <div class="row-between">
+          <h2 data-i18n="hist.title">Historial</h2>
+          <button id="btnClearHist" class="btn small" data-i18n="btn.clear">Borrar historial</button>
+        </div>
+        <ul id="histList" class="list"></ul>
+      </div>
+
+    </section>
+
+    <section data-panel="ended" class="card center" hidden>
+      <h2 data-i18n="ended.title">Sesión terminada</h2>
+      <p id="endMsg" class="muted"></p>
+      <button id="restart" class="btn primary" data-i18n="btn.newqr">Nuevo código QR</button>
+    </section>
+
+    <section data-panel="settings" class="card" hidden>
+      <div class="row-between">
+        <h2 data-i18n="set.title">Ajustes</h2>
+        <button id="btnBack" class="btn small" data-i18n="btn.back">Volver</button>
+      </div>
+
+      <label class="setting">
+        <div><strong data-i18n="set.dark">Modo noche</strong><small class="muted" data-i18n="set.dark.d">Interfaz oscura, más cómoda de noche.</small></div>
+        <input id="setDark" type="checkbox" class="switch">
+      </label>
+
+      <label class="setting">
+        <div><strong data-i18n="set.prev">Previsualización inteligente</strong><small class="muted" data-i18n="set.prev.d">Miniaturas, medidas de imágenes y fragmentos de texto.</small></div>
+        <input id="setPrev" type="checkbox" class="switch">
+      </label>
+
+      <label class="setting">
+        <div><strong data-i18n="set.hist">Historial local</strong><small class="muted" data-i18n="set.hist.d">Guarda solo nombres, tamaños y fechas, únicamente en este equipo.</small></div>
+        <input id="setHist" type="checkbox" class="switch">
+      </label>
+
+      <label class="setting">
+        <div><strong data-i18n="set.lang">Idioma</strong></div>
+        <select id="setLang">
+          <option value="auto" data-i18n="set.lang.auto">Automático</option>
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <option value="ca">Català</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ro">Română</option>
+        </select>
+      </label>
+
+      <div class="setting folder-setting">
+        <div>
+          <strong data-i18n="set.folder">Carpeta de descargas</strong>
+          <small class="muted" data-i18n="set.folder.d">Elige dónde guardar los archivos que recibes.</small>
+          <small id="folderInfo" class="muted"></small>
+        </div>
+        <div class="folder-actions">
+          <button id="btnFolder" class="btn small primary"></button>
+          <button id="btnFolderReset" class="btn small"></button>
+        </div>
+      </div>
+      <p id="folderMsg" class="hint" hidden></p>
+
+      <div class="contact">
+        <h3 data-i18n="contact.title">Contacto y sugerencias</h3>
+        <p class="muted small" data-i18n="contact.desc">¿Tienes dudas o una idea para mejorar TRANSFIERO?</p>
+        <p><strong>Jorge</strong> · <a href="mailto:noticiasbuenas2024@gmail.com?subject=TRANSFIERO%20Pro%20-%20Contacto">noticiasbuenas2024@gmail.com</a></p>
+        <a class="btn small primary" data-i18n="contact.btn" href="mailto:noticiasbuenas2024@gmail.com?subject=TRANSFIERO%20Pro%20-%20Contacto">Enviar un correo</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="logoutBar" class="logoutbar" hidden>
+    <button id="logout" class="btn" data-i18n="btn.logout">Cerrar sesión</button>
+  </div>
+
+  <script src="lib/qrcode.min.js"></script>
+  <script src="lib/fflate.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
