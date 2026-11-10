@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANSFIERO PRO - Transferencia rápida de archivos</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            padding: 2rem 1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background-color: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid #334155;
+        }
+
+        .btn-secondary:hover {
+            background-color: #334155;
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #334155;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            border-top: 1px solid #1e293b;
+            margin-top: 4rem;
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="badge">Extensión para Google Chrome</span>
+        <h1>TRANSFIERO PRO</h1>
+        <p class="subtitle">La forma más rápida y sencilla de transferir archivos, textos y enlaces entre tus dispositivos locales, directamente desde tu navegador.</p>
+        
+        <div class="cta-buttons">
+            <a href="https://github.com/CODENHACER/transfiero-pro" class="btn btn-primary">
+                Ver en GitHub
+            </a>
+            <a href="./phone/" class="btn btn-secondary">
+                Abrir versión Web / Móvil
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="features-grid">
+            <div class="card">
+                <h3>⚡ Transferencia Instantánea</h3>
+                <p>Envía archivos y datos de forma directa entre tus dispositivos en la misma red local sin complicaciones.</p>
+            </div>
+            <div class="card">
+                <h3>📱 Integración Móvil</h3>
+                <p>Conéctate fácilmente con tu teléfono u otros navegadores usando el cliente web integrado.</p>
+            </div>
+            <div class="card">
+                <h3>🔒 Privado y Seguro</h3>
+                <p>Tus datos se transfieren de punto a punto dentro de tu red sin necesidad de subirlos a servidores de terceros.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© TRANSFIERO PRO — Desarrollado por <strong>CODENHACER</strong></p>
+        <p style="margin-top: 0.5rem;"><a href="./PRIVACIDAD.md">Política de Privacidad</a></p>
+    </footer>
+
+</body>
+</html>
