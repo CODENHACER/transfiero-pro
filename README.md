@@ -17,10 +17,9 @@ El repositorio de la versión gratuita (TRANSFIERO, color morado) es independien
 
 ## Historial de versiones
 
-### 1.4.0 — Textos, móvil recordado y descargas ordenadas
+### 1.4.0 — Textos y descargas ordenadas
 
 - **Novedad (textos):** envía textos, enlaces y códigos (2FA, contraseñas…) entre el PC y el móvil en un mensaje cifrado que llega al instante. En el PC también arrastrando texto o pegándolo con Ctrl+V. Botones Copiar y Abrir en lo recibido, y quedan en el historial.
-- **Novedad (dispositivos):** tu móvil queda **recordado** tras la primera conexión por QR. En el PC aparece la lista «Tus dispositivos» con botón **Conectar** (sin escanear nada) y en el móvil la página se conecta sola al último PC. Verificación automática por prueba del canal: si la conexión no es directa, se cancela.
 - **Novedad (guardado):** Ajustes → «Cómo guardar lo recibido»: todo junto en Descargas, en la subcarpeta `TRANSFIERO` o por meses (`TRANSFIERO/2026-11`). Los archivos recibidos tienen botones **Mostrar** y **Abrir**.
 - Añadido el permiso `downloads` (el único nuevo; se usa para guardar lo recibido sin diálogos y abrir su carpeta).
 - **Arreglo:** la ayuda en francés, alemán y rumano prometía un ajuste de carpeta inexistente; reescrita la sección en los 6 idiomas. Mejorada la pantalla del móvil al abrirla sin enlace.
